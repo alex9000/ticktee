@@ -5,6 +5,7 @@
   <% end %>
 </ul>
 
-
+<%= admins_only do %>
 <%= link_to "New Project", new_project_path %>
+<% end %>
 
