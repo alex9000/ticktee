@@ -37,17 +37,19 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# gem 'ruby-debug19', :require => 'ruby-debug'  
+
+gem 'cancan'
 
 group :test, :development do
-  gem 'rspec-rails',  '~> 2.5'
+  gem 'rspec-rails',  '~> 2.5'  
 end
 
 group :test do
   gem 'cucumber-rails', '1.0.6'
   gem 'capybara'
   gem 'database_cleaner'
-	gem 'devise', '~> 1.4.3'
+	gem 'devise', '~> 1.4.3' 
 	gem 'email_spec'
 end
 
