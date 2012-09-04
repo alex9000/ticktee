@@ -40,6 +40,7 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'  
 
 gem 'cancan'
+gem "paperclip", "~> 3.0"
 
 group :test, :development do
   gem 'rspec-rails',  '~> 2.5'  

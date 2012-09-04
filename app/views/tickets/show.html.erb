@@ -2,12 +2,24 @@
 	<h2><%= @ticket.title %></h2>
 
 	<br><small>Created by <%= @ticket.user.email %></small>
-
-	<%= simple_format(@ticket.description) %>      
-
+	<%= simple_format(@ticket.description) %> 
+	
 	<%= authorized?("edit tickets".to_sym, @project) do %>	
 		<%= link_to "Edit Ticket", [:edit, @project, @ticket] %>   
 	<% end %>
+	
+	<% if @ticket.asset.exists? %>
+    <h3>Attached Files</h3>
+    <div class="asset">
+        <p>
+          <%= link_to File.basename(@ticket.asset.path), @ticket.asset.url %>
+        </p>
+        <p>
+          <small><%= number_to_human_size(@ticket.asset.size) %></small>
+        </p>
+    </div>
+  <% end %>     
+
 
 	<%= authorized?("delete tickets".to_sym, @project) do %>	
  		<%= link_to "Delete Ticket", [@project, @ticket], :method => :delete,
