@@ -4,6 +4,7 @@
 	<br><small>Created by <%= @ticket.user.email %></small>
 	<%= render @ticket.state if @ticket.state %>
 	<%= simple_format(@ticket.description) %> 
+	<div id='tags'><%= render @ticket.tags %></div>
 	
 	<%= authorized?("edit tickets".to_sym, @project) do %>	
 		<%= link_to "Edit Ticket", [:edit, @project, @ticket] %>   
