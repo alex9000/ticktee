@@ -44,6 +44,7 @@ gem "paperclip", "~> 3.0"
 gem 'searcher'
 
 group :test, :development do
+  gem 'gmail'
   gem 'rspec-rails',  '~> 2.5'  
 end
 

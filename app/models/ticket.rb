@@ -17,8 +17,7 @@ class Ticket < ActiveRecord::Base
   has_and_belongs_to_many :watchers, :join_table => "ticket_watchers",
                                      :class_name => "User"
                           
-  after_create :creator_watches_me
-  
+  after_create :creator_watches_me  
   
   def tag!(tags)
     tags = tags.split(" ").map do |tag|
@@ -31,7 +30,9 @@ class Ticket < ActiveRecord::Base
   private
   
   def creator_watches_me
-    self.watchers << user
+    if user
+        self.watchers << user unless self.watchers.include?(user)
+    end
   end
   
 end

@@ -3,9 +3,9 @@ class Comment < ActiveRecord::Base
   after_create :set_ticket_state
   after_create :creator_watches_ticket
   
-  belongs_to :ticket
   belongs_to :user
   belongs_to :state
+  belongs_to :ticket
   belongs_to :previous_state, :class_name => "State"
   
   delegate :project, :to => :ticket
@@ -24,7 +24,6 @@ class Comment < ActiveRecord::Base
     end
     
     def creator_watches_ticket
-      ticket.watchers << user
+      ticket.watchers << user  unless ticket.watchers.include?(user)
     end
-
 end
